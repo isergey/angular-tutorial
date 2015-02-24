@@ -1,0 +1,24 @@
+<div>
+    Детальная информация о задаче #{{ task.id }}
+    <table>
+        <tr>
+            <th>Название</th>
+            <td>{{ task.title }}</td>
+        </tr>
+        <tr>
+            <th>Описание</th>
+            <td>{{ task.description }}</td>
+        </tr>
+        <tr>
+            <th>Создано</th>
+            <td>{{ task.created | date }}</td>
+        </tr>
+        <tr>
+            <th>Владелец</th>
+            <td>{{ task.owner }}</td>
+        </tr>
+    </table>
+    <div>
+        <button ng-click="alert(task.title)">Алерт</button>
+    </div>
+</div>

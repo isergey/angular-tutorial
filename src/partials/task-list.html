@@ -1,0 +1,29 @@
+<div>
+    <h1>{{ name }}</h1>
+    <div>
+        Фильтр задач: <input placeholder="Поиск по задачам" ng-model="query">
+    </div>
+    <div>Сортировать по:
+        <select ng-model="orderProp">
+            <option value="title">Названию</option>
+            <option value="id">Номеру</option>
+        </select>
+    </div>
+    <div>Запрос: {{ query }}</div>
+
+    <ul>
+        <li ng-repeat="task in tasks | filter:query | orderBy:orderProp">
+            <span>{{ task.id }}.</span> <a href="#/tasks/{{task.id}}">{{ task.title }}</a>
+            <p>{{ task.description }}</p>
+            <p>Выполнено: {{ task.completed | checkmark }}</p>
+        </li>
+    </ul>
+    <p>Всего задач: {{ tasks.length }}</p>
+    <div>Показать исходный json:
+        <select ng-model="showJson">
+            <option value="1">Да</option>
+            <option value="0">Нет</option>
+        </select>
+    </div>
+    <pre ng-show="showJson == '1'">{{ tasks|json }}</pre>
+</div>
